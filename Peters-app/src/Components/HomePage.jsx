@@ -27,6 +27,8 @@ import {
   import { RiDeleteBin6Fill } from "react-icons/ri"
   import Pie from "../assets/Pie.svg"
 import Heading1 from '../Pages/Heading1';
+import ApexChart1 from '../Pages/ApexChart1';
+import PieChart from '../Pages/PieChart';
 
 
 
@@ -34,7 +36,15 @@ import Heading1 from '../Pages/Heading1';
     const { isOpen, onClose, onOpen } = useDisclosure();
   
     return (
-      <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="100vh" w={"93.5vw"} mb={"0px"}  border={"1px solid red"} marginTop={"0px"}>
+      <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="auto" w={"93.5vw"} mb={"0px"}   marginTop={"0px"}>
+        <SidebarContent display={{ base: 'none', md: 'unset' }} />
+        <Drawer isOpen={isOpen} onClose={onClose} placement="left">
+          <DrawerOverlay />
+          <DrawerContent>
+            <SidebarContent w="full" borderRight="none" />
+          </DrawerContent>
+          
+        </Drawer>
         <Flex
             as="header"
             align="center"
@@ -70,20 +80,24 @@ import Heading1 from '../Pages/Heading1';
               
             </Flex>
           </Flex>
-        <SidebarContent display={{ base: 'none', md: 'unset' }} />
-        <Drawer isOpen={isOpen} onClose={onClose} placement="left">
-          <DrawerOverlay />
-          <DrawerContent>
-            <SidebarContent w="full" borderRight="none" />
-          </DrawerContent>
-          
-        </Drawer>
+        
         <Box  transition=".3s ease"  mt={"10px"} >
             
         <Heading1/>
   
          
         </Box>
+      
+        <Box>
+          {/* <Text>Emission/Revenue</Text> */}
+          <ApexChart1/>
+        </Box>
+        <Box  transition=".3s ease"  mt={"10px"} >
+            
+            <PieChart/>
+       
+              
+             </Box>
       </Box>
     );
   }

@@ -37,7 +37,7 @@ For support, email -neelachari34@gmail.com
 
 For Go to the website click the link:-https://peters-app.netlify.app/
 
-GitHub Link:https://github.com/Neelachari/supreme-honey-5251
+GitHub Link: https://github.com/Neelachari/Peters
 ## Screenshots
 ![image](https://github.com/Neelachari/Peters/assets/112808279/31f38efe-47b1-42c1-8896-011aa329766b)
 

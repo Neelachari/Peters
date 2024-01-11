@@ -6,16 +6,23 @@ import { FaFileDownload } from "react-icons/fa";
 
 export const HomePage2 = () => {
   return (
-    <div style={{ width:"100%", display:"flex", justifyContent:"space-evenly", paddingLeft:"15%", gap:"40px"}} >
-      <div style={{width:"40%", }} >
-      <PieChart/>
-      </div>
+    <Flex
+    direction={{ base: 'column', md: 'row' }} // Adjust the direction based on screen size
+    justify="space-evenly"
+    align="center"
+    paddingLeft="10%" // Adjust padding based on screen size
+    width="90%"
+    gap="30px"
+  >
+      <Box width={{ base: '100%', md: '40%' }}>
+        <PieChart />
+      </Box>
        
            
-       <div style={{ width:"60%",  border:"1px solid gray", boxShadow: 'rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset', borderRadius:"10px"}}  >
-       <Flex style={{padding:"10px"}}> <Text fontSize={"smaller"} mr={"5px"} >Supplier-wise </Text><IoIosInformationCircleOutline style={{fontSize:"20px"}}/> <Text ml={"60%"} mr={"10px"}>Download</Text><FaFileDownload style={{marginRight:"20px", fontSize:"20px", color:"#02AB6C"}}/></Flex>
-       <TableContainer  br={"10px"}  >
-  <Table size='sm' mt={"20px"} >
+       <Box width={{ base: '100%', md: '60%' }} border="1px solid gray" borderRadius="10px" boxShadow='rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset'  >
+       <Flex padding="10px"> <Text fontSize="smaller" marginRight="5px" >Supplier-wise </Text><IoIosInformationCircleOutline style={{fontSize:"20px"}}/> <Text marginLeft="auto" marginRight="10px">Download</Text><FaFileDownload style={{ marginRight: '20px', fontSize: '20px', color: '#02AB6C' }}/></Flex>
+       <TableContainer borderRadius="10px">
+          <Table size="sm" marginTop="20px" padding="20px">
     <Thead >
       <Tr>
         <Th  >Month</Th>
@@ -77,8 +84,8 @@ export const HomePage2 = () => {
    
   </Table>
 </TableContainer>
-       </div>
+       </Box>
       
-    </div>
+    </Flex>
   )
 }

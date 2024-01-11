@@ -27,27 +27,35 @@ import {
 import Heading1 from '../Pages/Heading1';
 import ApexChart1 from '../Pages/ApexChart1';
 import { HomePage2 } from '../Pages/HomePage2';
-import { ShowTime } from '../Pages/ShowTime';
+
 import { useState } from 'react';
-
-
+import User from "../assets/Avatar.svg"
+import { IoMdArrowDropdown } from "react-icons/io";
+import { FiBell } from "react-icons/fi";
 
   export default function HomePage() {
     const { isOpen, onClose, onOpen } = useDisclosure();
-    const [selectedTimeline, setSelectedTimeline] = useState('');
+  const [selectedTimeline, setSelectedTimeline] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
 
+  const handleTimelineChange = (value) => {
+    setSelectedTimeline(value);
+  };
 
-    const handleTimelineChange = (value) => {
-      setSelectedTimeline(value);
-    };
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+    handleTimelineChange(value);
+  };
+
   
     return (
       <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} minH="auto" w={"93.5vw"} mb={"0px"}   marginTop={"0px"}  >
-        <SidebarContent display={{ base: 'none', md: 'unset' }} />
-        <Drawer isOpen={isOpen} onClose={onClose} placement="left">
+        <SidebarContent display={{ base: 'none', md: 'unset',  }} />
+        <Drawer isOpen={isOpen} onClose={onClose} placement="left" >
           <DrawerOverlay />
           <DrawerContent>
-            <SidebarContent w="full" borderRight="none" />
+            <SidebarContent w="full" borderRight="none"  />
           </DrawerContent>
           
         </Drawer>
@@ -58,9 +66,9 @@ import { useState } from 'react';
             w="full"
             px="0"
             borderBottomWidth="1px"
-            borderColor={useColorModeValue('inherit', 'gray.700')}
-            bg={useColorModeValue('white', 'gray.800')}
-            boxShadow="sm"
+            borderColor={useColorModeValue('white', 'gray.700')}
+            bg={useColorModeValue('gray.50', 'gray.700')}
+            // boxShadow="sm"
             h="14"
             mt={"0px"}
           
@@ -80,17 +88,31 @@ import { useState } from 'react';
             <Avatar
                 
                 size="sm"
-                name="Ahmad"
-                src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+                name="user"
+                src={User}
                 cursor="pointer"
               />
-              <Icon ml="4" color="gray.500" as={FaBell} cursor="pointer" />
+              <IoMdArrowDropdown style={{fontSize:"40px"}}/>
+              <FiBell  style={{fontSize:"25px", border:"1px solid white", background:"white"}} />
               
             </Flex>
           </Flex>
-          <Box mt={"20px"}>
+          <Box style={{ width: "20%", marginLeft: "80%" }}>
+         <Select
+          color={"#02AB6C"}
+          fontSize={"small"}
+          onChange={handleChange}
+          value={selectedOption}
+          placeholder='Show Timeline: Jan’22 - Dec’23'
+        >
+          <option value='data'>Show Timeline: Jan’20 - Dec’21</option>
+          <option value='data'>Show Timeline: Jan’21 - Dec’22</option>
+          <option value='data'>Show Timeline: Jan’22 - Dec’23</option>
+        </Select>
+    </Box>
+          {/* <Box mt={"20px"}>
               <ShowTime onChange={handleTimelineChange} />
-           </Box>
+           </Box> */}
 
         <Box  transition=".3s ease"  mt={"10px"} >
             
@@ -127,7 +149,8 @@ import { useState } from 'react';
       bg={useColorModeValue('#181818', 'gray.800')}
       borderColor={useColorModeValue('inherit', 'gray.700')}
       borderRightWidth="1px"
-      w="60"
+      w="40"
+      // border="3px solid red"
       {...props}
     >
       <Flex px="4" py="5" align="center">
@@ -141,21 +164,21 @@ import { useState } from 'react';
          <img src={Logo} alt="" />
         </Text>
       </Flex>
-      <Flex direction="column" as="nav" fontSize="small" color="gray.600" aria-label="Main Navigation" >
-        <h6 style={{marginTop:"20px", textAlign:"left"}}>DATA-IN</h6>
+      <Flex direction="column" as="nav" fontSize="x-small" color="gray.600" aria-label="Main Navigation" >
+        <h6 style={{marginTop:"20px", textAlign:"left", fontSize:"small"}}>DATA-IN</h6>
         <NavItem icon={MdEnergySavingsLeaf}> <Select placeholder='Energy' border={"#181818"} color={"white"} >
-  <option  value='option1'>Category 1</option>
-  <option  value='option2'>Category 4</option>
-  <option  value='option3'>Category 6</option>
-  <option  value='option3'>Category 7</option>
-  <option  value='option3'>Category 9</option>
+  <option  style={{background:"#181818", width:"200px"}} value='option1'>Category 1</option>
+  <option  style={{background:"#181818", width:"200px"}} value='option2'>Category 4</option>
+  <option  style={{background:"#181818", width:"200px"}} value='option3'>Category 6</option>
+  <option  style={{background:"#181818", width:"200px"}} value='option3'>Category 7</option>
+  <option  style={{background:"#181818", width:"200px"}} value='option3'>Category 9</option>
 </Select> </NavItem>
         <NavItem icon={MdOutlineWaterDrop}> <Select placeholder='Water and Effluents' border={"#181818"} color={"white"} >
-  <option value='option1'>Category 1</option>
-  <option value='option2'>Category 4</option>
-  <option value='option3'>Category 6</option>
-  <option value='option3'>Category 7</option>
-  <option value='option3'>Category 9</option>
+  <option style={{background:"#181818", width:"200px"}} value='option1'>Category 1</option>
+  <option style={{background:"#181818", width:"200px"}} value='option2'>Category 4</option>
+  <option style={{background:"#181818", width:"200px"}} value='option3'>Category 6</option>
+  <option style={{background:"#181818", width:"200px"}} value='option3'>Category 7</option>
+  <option style={{background:"#181818", width:"200px"}} value='option3'>Category 9</option>
 </Select>  </NavItem>
         <h6 style={{marginTop:"20px", textAlign:"left"}}>Analyze</h6>
         <NavItem icon={MdEnergySavingsLeaf} ><Text color={"white"}>Energy</Text> </NavItem>
